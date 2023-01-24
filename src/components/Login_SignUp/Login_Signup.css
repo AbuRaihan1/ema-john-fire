@@ -1,0 +1,47 @@
+.login-wrapper {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 30px;
+  width: 320px;
+  height: 400px;
+  margin: 50px auto;
+}
+
+.login-wrapper h2 {
+  text-align: center;
+}
+.form input {
+  display: block;
+  padding: 10px;
+  width: 90%;
+  border: 1px solid lightgray;
+  outline: none;
+  border-radius: 5px;
+  margin: 5px 0;
+  margin-bottom: 10px;
+}
+.form input:focus {
+  border: 1px solid #e6a647;
+}
+.form button {
+  width: 97%;
+  padding: 10px;
+  margin: 5px 0;
+  border: none;
+  outline: none;
+  background: #e0b16b;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.form button:hover {
+  background: #e6a647;
+}
+
+.form span {
+  display: block;
+  margin-top: 5px;
+}
