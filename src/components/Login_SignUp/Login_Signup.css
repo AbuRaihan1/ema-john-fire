@@ -3,7 +3,6 @@
   border-radius: 5px;
   padding: 30px;
   width: 320px;
-  height: 400px;
   margin: 50px auto;
 }
 
@@ -44,4 +43,9 @@
 .form span {
   display: block;
   margin-top: 5px;
+}
+
+.error-style {
+  color: red;
+  font-size: 17px;
 }
