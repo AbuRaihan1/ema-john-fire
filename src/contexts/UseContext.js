@@ -9,13 +9,14 @@ import {
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
 import { useEffect } from "react";
+import { faL } from "@fortawesome/free-solid-svg-icons";
 export const AuthContext = createContext();
 
 const auth = getAuth(app);
 const UseContext = ({ children }) => {
   const [error, setError] = useState("");
   const [user, setUser] = useState(null);
-
+  const [loading, setLoading] = useState(true);
   // create user with email and password
   const createUser = (email, password) => {
     createUserWithEmailAndPassword(auth, email, password)
@@ -48,14 +49,14 @@ const UseContext = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
       setUser(loggedUser);
-      console.log(loggedUser);
+      setLoading(false);
     });
     return () => {
       unsubscribe();
     };
   }, []);
 
-  const authInfo = { user, error, createUser, signInUser, logOut };
+  const authInfo = { user, error, loading, createUser, signInUser, logOut };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
