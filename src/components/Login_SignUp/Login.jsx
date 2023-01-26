@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/UseContext";
 import "./Login_Signup.css";
 const Login = () => {
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
   const navigate = useNavigate();
   const { signInUser, error } = useContext(AuthContext);
   const handleSubmitLogin = (e) => {
@@ -12,7 +13,7 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     signInUser(email, password);
-    navigate("/");
+    navigate(from, {replace : true});
   };
   return (
     <div>

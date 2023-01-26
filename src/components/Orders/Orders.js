@@ -38,7 +38,7 @@ const Orders = () => {
       <div className="cart-container">
         <Cart clearCart={clearCart} cart={cart}>
           {" "}
-          <button class="signUp_logout">
+          <button className="signUp_logout">
             <Link to="/shipping" style={{ textDecoration: "none" }}>
               Procced Order
             </Link>

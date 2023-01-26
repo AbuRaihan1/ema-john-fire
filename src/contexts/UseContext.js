@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-import { createContext } from "react";
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -7,9 +5,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
+import React, { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
-import { useEffect } from "react";
-import { faL } from "@fortawesome/free-solid-svg-icons";
 export const AuthContext = createContext();
 
 const auth = getAuth(app);
@@ -17,8 +14,10 @@ const UseContext = ({ children }) => {
   const [error, setError] = useState("");
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
   // create user with email and password
   const createUser = (email, password) => {
+    setLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
         console.log(result.user);
@@ -30,6 +29,7 @@ const UseContext = ({ children }) => {
 
   // sign in with email and password
   const signInUser = (email, password) => {
+    setLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
         console.log(result.user);
@@ -43,6 +43,7 @@ const UseContext = ({ children }) => {
 
   // logout user
   const logOut = () => {
+    setLoading(true);
     signOut(auth);
   };
 
