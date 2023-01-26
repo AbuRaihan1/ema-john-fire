@@ -1,12 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import About from "../components/About/About";
 import Inventory from "../components/Inventory/Inventory";
-import Orders from "../components/Orders/Orders";
-import Shop from "../components/Shop/Shop";
-import Main from "../layouts/Main";
 import Login from "../components/Login_SignUp/Login.jsx";
 import SignUp from "../components/Login_SignUp/SignUp";
+import Orders from "../components/Orders/Orders";
+import Shipping from "../components/Shipping/Shipping";
+import Shop from "../components/Shop/Shop";
+import Main from "../layouts/Main";
 import { productsAndCartLoader } from "../loaders/productsAndCartLoader";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +40,14 @@ const router = createBrowserRouter([
       {
         path: "signUp",
         element: <SignUp></SignUp>,
+      },
+      {
+        path: "shipping",
+        element: (
+          <PrivateRoutes>
+            <Shipping></Shipping>
+          </PrivateRoutes>
+        ),
       },
     ],
   },
